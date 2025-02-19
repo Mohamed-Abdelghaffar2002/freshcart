@@ -74,7 +74,7 @@ export default function Login() {
 
   return (
     <>
-      <form className="md:w-1/2 mx-auto" onSubmit={formik.handleSubmit}>
+      <form className="md:w-1/2 mx-auto py-[26.5px]" onSubmit={formik.handleSubmit}>
         <div className="mb-5">
           <label
             htmlFor="email"

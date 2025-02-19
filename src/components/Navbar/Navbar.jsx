@@ -97,25 +97,27 @@ export default function Navbar() {
                   <i className="fab fa-telegram-plane fa-lg cursor-pointer"></i>
                 </Link>
               </li>
-              <li className="px-2">
-                <NavLink
-                  to={"cart"}
-                  className=" font-medium text-gray-900 text-lg"
-                >
-                  {
-                    <div className="relative inline-flex items-center p-3 text-sm font-medium text-center text-white">
-                      <i className="fas fa-shopping-cart text-2xl text-main"></i>
-                      <div
-                        className={`${
-                          cart?.numOfCartItems == 0 && "hidden"
-                        } absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-main border-2 border-white rounded-full -top-[1px] end-[13px] dark:border-gray-900`}
-                      >
-                        {cart?.numOfCartItems}
+              {userToken && (
+                <li className="px-2">
+                  <NavLink
+                    to={"cart"}
+                    className=" font-medium text-gray-900 text-lg"
+                  >
+                    {
+                      <div className="relative inline-flex items-center p-3 text-sm font-medium text-center text-white">
+                        <i className="fas fa-shopping-cart text-2xl text-main"></i>
+                        <div
+                          className={`${
+                            cart?.numOfCartItems == 0 && "hidden"
+                          } absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-main border-2 border-white rounded-full -top-[1px] end-[13px] dark:border-gray-900`}
+                        >
+                          {cart?.numOfCartItems}
+                        </div>
                       </div>
-                    </div>
-                  }
-                </NavLink>
-              </li>
+                    }
+                  </NavLink>
+                </li>
+              )}
             </ul>
             {userToken ? (
               <span
