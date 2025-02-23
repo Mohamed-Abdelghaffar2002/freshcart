@@ -73,6 +73,12 @@ export default function Navbar() {
               >
                 products
               </NavLink>
+              <NavLink
+                to={"allorders"}
+                className=" font-medium text-gray-900 text-lg"
+              >
+                all orders
+              </NavLink>
             </div>
           )}
 
@@ -104,8 +110,8 @@ export default function Navbar() {
                     className=" font-medium text-gray-900 text-lg"
                   >
                     {
-                      <div className="relative inline-flex items-center p-3 text-sm font-medium text-center text-white">
-                        <i className="fas fa-shopping-cart text-2xl text-main"></i>
+                      <div className="relative inline-flex items-center p-3 text-sm font-medium text-center text-inherit">
+                        <i className="fas fa-shopping-cart text-2xl text-inherit"></i>
                         <div
                           className={`${
                             cart?.numOfCartItems == 0 && "hidden"
@@ -122,7 +128,7 @@ export default function Navbar() {
             {userToken ? (
               <span
                 onClick={() => logOut()}
-                className=" font-medium cursor-pointer center text-gray-900 text-lg"
+                className="text-red-600 font-medium cursor-pointer center text-lg"
               >
                 Log Out
               </span>
@@ -226,7 +232,7 @@ export default function Navbar() {
                     </span>
                   ) : (
                     <>
-                      {" "}
+                     
                       <NavLink
                         to={"/register"}
                         className="block rounded-lg  text-base/7 font-medium text-gray-900 hover:bg-gray-50"

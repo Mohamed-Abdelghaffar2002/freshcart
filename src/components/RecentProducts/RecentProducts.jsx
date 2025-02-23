@@ -4,32 +4,22 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import { CartContext } from "../../context/CartContext";
+import { useQuery } from "@tanstack/react-query";
+import useProducts from "../../Hooks/useProducts";
 
 export default function RecentProducts() {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { addProductToCart } = useContext(CartContext);
 
-  const {addProductToCart}=useContext(CartContext)
-
-  async function getProducts() {
-    const { data } = await axios.get(
-      `https://ecommerce.routemisr.com/api/v1/products`
-    );
-    setProducts(data.data);
-    setLoading(false);
-  }
-  useEffect(() => {
-    getProducts();
-  }, []);
+  let { data, isLoading } = useProducts();
 
   return (
     <>
-    <p className=" text-2xl capitalize mt-4 pb-0 mb-0">resent products</p>
-      {loading ? (
-     <Loading/>
+      <p className=" text-2xl capitalize mt-4 pb-0 mb-0">resent products</p>
+      {isLoading ? (
+        <Loading />
       ) : (
         <div className="center py-8 gap-y-4">
-          {products.map((product) => {
+          {data.map((product) => {
             return (
               <div
                 className="px-2 pt-0 mt-0 xl:w-1/6 lg:w-1/4 md:w-1/3 sm:w-1/2"
@@ -37,7 +27,7 @@ export default function RecentProducts() {
               >
                 <div>
                   <div className="product p-2 pt-0 mt-0 rounded-lg ">
-                    <Link to={`productdetails/${product.id}`}>
+                    <Link to={`/productdetails/${product.id}`}>
                       <div className=" overflow-hidden">
                         <img
                           className="w-full"
@@ -56,7 +46,12 @@ export default function RecentProducts() {
                         </span>
                       </div>
                     </Link>
-                    <button onClick={()=>addProductToCart(product.id)} className="btn w-full">Add to cart</button>
+                    <button
+                      onClick={() => addProductToCart(product.id)}
+                      className="btn w-full"
+                    >
+                      Add to cart
+                    </button>
                   </div>
                 </div>
               </div>

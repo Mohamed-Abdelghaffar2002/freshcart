@@ -12,8 +12,8 @@ export default function Footer() {
     <>
       <div className="bg-[#f0f0f0] p-4">
         <div>
-          <p className="text-2xl">Get the FreshCart App</p>
-          <p className=" text-gray-500">
+          <p className="sm:text-2xl">Get the FreshCart App</p>
+          <p className="text-[12px] sm:text-base text-gray-500">
             We will send you a link, open it on your phone to download the app.
           </p>
 
@@ -26,25 +26,32 @@ export default function Footer() {
               />
             </div>
             <div className="w-1/6 ">
+            
               <button
                 type="button"
-                className=" w-full   dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className=" w-full hidden sm:inline-block text-nowrap sm:text-base text-[12px] px-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                 Share App Link
+              </button>
+              <button
+                type="button"
+                className=" w-full  sm:hidden text-nowrap text-[12px]  px-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Share
               </button>
             </div>
           </div>
 
           <div className="sm:flex sm:items-center sm:justify-between mt-2  border-y-[2px]">
             <div className="flex items-center  justify-center  gap-x-2">
-              <span>Payment partners</span>
+              <span className="text-[14px] sm:text-base">Payment partners</span>
               <img className=" cursor-pointer  w-12" src={img1} alt="payment" />
               <img className=" cursor-pointer  w-12" src={img2} alt="payment" />
               <img className=" cursor-pointer  w-12" src={img3} alt="payment" />
             </div>
 
             <div className="flex  items-center justify-center gap-x-2">
-              <span>Get deliveries with FreshCart</span>
+              <span className="text-[12px] sm:text-base text-nowrap">Get deliveries with FreshCart</span>
               <Link
                 target="-blank"
                 to={"https://www.apple.com/eg-ar/app-store/"}

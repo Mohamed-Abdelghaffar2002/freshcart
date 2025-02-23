@@ -14,6 +14,10 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import { CartContextProvider } from "./context/CartContext";
 import { Toaster } from "react-hot-toast";
+import CheckOut from "./components/CheckOut/CheckOut";
+import AllOrders from "./components/AllOrders/AllOrders";
+import { Query } from "./../node_modules/@tanstack/query-core/src/query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const routers = createBrowserRouter([
   {
@@ -34,7 +38,6 @@ const routers = createBrowserRouter([
         path: "cart",
         element: (
           <ProtectedRoute>
-            {" "}
             <Cart />
           </ProtectedRoute>
         ),
@@ -59,7 +62,23 @@ const routers = createBrowserRouter([
         path: "products",
         element: (
           <ProtectedRoute>
-            <Products />{" "}
+            <Products />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "checkout",
+        element: (
+          <ProtectedRoute>
+            <CheckOut />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "allorders",
+        element: (
+          <ProtectedRoute>
+            <AllOrders />
           </ProtectedRoute>
         ),
       },
@@ -67,7 +86,7 @@ const routers = createBrowserRouter([
         path: "productdetails/:id",
         element: (
           <ProtectedRoute>
-            <ProductDetails />{" "}
+            <ProductDetails />
           </ProtectedRoute>
         ),
       },
@@ -75,15 +94,18 @@ const routers = createBrowserRouter([
     ],
   },
 ]);
+const query = new QueryClient();
 function App() {
   return (
     <>
-      <CartContextProvider>
-        <UserContextProvider>
-          <RouterProvider router={routers}></RouterProvider>
-          <Toaster/>
-        </UserContextProvider>
-      </CartContextProvider>
+      <QueryClientProvider client={query}>
+        <CartContextProvider>
+          <UserContextProvider>
+            <RouterProvider router={routers}></RouterProvider>
+            <Toaster />
+          </UserContextProvider>
+        </CartContextProvider>
+      </QueryClientProvider>
     </>
   );
 }

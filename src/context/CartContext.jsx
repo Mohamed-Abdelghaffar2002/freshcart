@@ -16,7 +16,7 @@ export function CartContextProvider({ children }) {
         { headers }
       );
       getProductsCart();
-      console.log(data);
+      // console.log(data);
       toast.success(data.message, { position: "bottom-right" });
     } catch (error) {
       console.log(error);
@@ -31,7 +31,7 @@ export function CartContextProvider({ children }) {
         { headers }
       );
       setCart(data);
-      console.log(data);
+      // console.log(data);
       toast.success(data.status, { position: "top-center", duration: 800});
     } catch (error) {
       console.log(error);
@@ -45,7 +45,7 @@ export function CartContextProvider({ children }) {
         { headers }
       );
       setCart(data);
-      console.log(data);
+      // console.log(data);
       toast.success(data.status, { position: "top-center", duration: 800});
     } catch (error) {
       console.log(error);
@@ -61,7 +61,7 @@ export function CartContextProvider({ children }) {
         { headers }
       );
       setCart(data);
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       console.log(error);
     }
