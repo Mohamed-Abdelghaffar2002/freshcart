@@ -42,7 +42,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="sm:flex sm:items-center sm:justify-between mt-2  border-y-[2px]">
+          <div className="sm:flex sm:items-center sm:justify-between mt-2 mb-0  border-y-[2px]">
             <div className="flex items-center  justify-center  gap-x-2">
               <span className="text-[14px] sm:text-base">Payment partners</span>
               <img className=" cursor-pointer  w-12" src={img1} alt="payment" />

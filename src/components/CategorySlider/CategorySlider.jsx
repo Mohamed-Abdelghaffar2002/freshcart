@@ -68,7 +68,7 @@ export default function CategorySlider() {
             return (
               <div className="my-3" key={category._id}>
                 <img
-                  className="w-full h-[290px] object-fill"
+                  className="w-full  h-[290px] object-fill"
                   src={category.image}
                   alt={category.name}
                 />

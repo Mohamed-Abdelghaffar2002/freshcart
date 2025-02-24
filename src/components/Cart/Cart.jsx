@@ -24,16 +24,16 @@ export default function Cart() {
                   <th scope="col" className="px-16 py-3">
                     <span className="sr-only">Image</span>
                   </th>
-                  <th scope="col" className="px-6 py-3">
+                  <th scope="col" className=" px-2 py-1 sm:px-6 sm:py-3 ">
                     Product
                   </th>
-                  <th scope="col" className="px-6 py-3">
+                  <th scope="col" className=" px-2 py-1 sm:px-6 sm:py-3 ">
                     Qty
                   </th>
-                  <th scope="col" className="px-6 py-3">
+                  <th scope="col" className=" px-2 py-1 sm:px-6 sm:py-3 ">
                     Price
                   </th>
-                  <th scope="col" className="px-6 py-3">
+                  <th scope="col" className=" px-2 py-1 sm:px-6 sm:py-3 ">
                     Action
                   </th>
                 </tr>
@@ -45,17 +45,17 @@ export default function Cart() {
                       className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
                       key={index}
                     >
-                      <td className="p-4">
+                      <td className="p-2 sm:p-4">
                         <img
                           src={item.product.imageCover}
-                          className="w-16 md:w-32 max-w-full max-h-full"
+                          className=" md:w-32 max-w-full max-h-full"
                           alt={item.product.title}
                         />
                       </td>
-                      <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                      <td className=" px-2  sm:px-6 py-1 sm:py-4 font-semibold text-gray-900 dark:text-white">
                         {item.product.title}
                       </td>
-                      <td className="px-6 py-4">
+                      <td className=" px-2  sm:px-6 py-1 sm:py-4">
                         <div className="flex items-center">
                           <button
                             onClick={() =>
@@ -119,14 +119,14 @@ export default function Cart() {
                           </button>
                         </div>
                       </td>
-                      <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                      <td className=" px-2  sm:px-6 py-1 sm:py-4 font-semibold text-gray-900 dark:text-white">
                         <span className="text-lg">
                           {" "}
                           {item.price * item.count}
                         </span>
                         <span className="px-2">EGP</span>
                       </td>
-                      <td className="px-6 py-4">
+                      <td className=" px-2  sm:px-6 py-1 sm:py-4">
                         <button
                           onClick={() => removeProductFromCart(item.product.id)}
                           className=" bg-transparent focus:ring-transparent hover:bg-transparent font-medium text-red-600 dark:text-red-500 hover:underline"
@@ -140,7 +140,7 @@ export default function Cart() {
               </tbody>
             </table>
             <div className="flex justify-between p-8 pb-0 items-center">
-              <p className="text-2xl">
+              <p className="sm:text-2xl">
                 Total cost :
                 <span className=" mx-2 font-bold">
                   {cart.data.totalCartPrice}

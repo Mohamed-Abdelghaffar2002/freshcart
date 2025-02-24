@@ -11,20 +11,49 @@ import { CartContext } from "../../context/CartContext";
 
 export default function CheckOut() {
   const [loading, setLoading] = useState(false);
-
+  const navigate = useNavigate();
   let { cart } = useContext(CartContext);
 
   async function CheckOut(shippingAddress) {
+    console.log(shippingAddress);
+
+    if (shippingAddress.paymentMethod === "cashPayment") {
+      await CashPayment(shippingAddress);
+      console.log(1);
+    } else if (shippingAddress.paymentMethod === "onlinePayment") {
+      await OnlinePayment(shippingAddress);
+      console.log(0);
+    }
+  }
+  async function OnlinePayment(shippingAddress) {
+    console.log(shippingAddress);
+
     try {
       setLoading(true);
       let { data } = await axios.post(
         `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.cartId}?url=http://localhost:5173`,
         { shippingAddress },
-        { headers: {token:localStorage.getItem("userToken")} }
+        { headers: { token: localStorage.getItem("userToken") } }
+      );
+      setLoading(false);
+      console.log(data);
+      location.href = data.session.url;
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
+    }
+  }
+  async function CashPayment(shippingAddress) {
+    try {
+      setLoading(true);
+      let { data } = await axios.post(
+        `https://ecommerce.routemisr.com/api/v1/orders/${cart.cartId}`,
+        { shippingAddress },
+        { headers: { token: localStorage.getItem("userToken") } }
       );
       setLoading(false);
       // console.log(data);
-      location.href=data.session.url
+      navigate("/allorders");
     } catch (err) {
       console.log(err);
       setLoading(false);
@@ -36,6 +65,7 @@ export default function CheckOut() {
       details: "",
       phone: "",
       city: "",
+      paymentMethod: "cashPayment",
     },
     onSubmit: CheckOut,
   });
@@ -96,6 +126,26 @@ export default function CheckOut() {
             className="shadow-xs bg-gray-50 border border-main text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main dark:focus:border-main dark:shadow-xs-light"
             required
           />
+        </div>
+
+        <div className="w-full mx-auto pb-4">
+          <label
+            htmlFor="paymentMethod"
+            className="block  mb-2 text-sm font-medium text-main dark:text-white"
+          >
+            Select your payment method
+          </label>
+          <select
+            value={formik.values.paymentMethod}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            required
+            id="paymentMethod"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main dark:focus:border-main"
+          >
+            <option value={"cashPayment"}>Cash on delivery</option>
+            <option value={"onlinePayment"}>Debit/Credit card</option>
+          </select>
         </div>
 
         {loading ? (
