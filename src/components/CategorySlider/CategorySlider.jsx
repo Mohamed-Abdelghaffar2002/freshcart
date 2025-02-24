@@ -4,6 +4,8 @@ import axios from "axios";
 import Slider from "react-slick";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../Loading/Loading";
+import useCategories from "../../Hooks/useCategories";
+import { Link } from "react-router-dom";
 
 export default function CategorySlider() {
   const settings = {
@@ -13,7 +15,7 @@ export default function CategorySlider() {
     autoplay: true,
     autoplaySpeed: 2400,
     speed: 800,
-    slidesToShow: 7,
+    slidesToShow: 6,
     slidesToScroll: 1,
     responsive: [
       {
@@ -48,13 +50,8 @@ export default function CategorySlider() {
   //   getAllCategories();
   // }, []);
 
-  function getAllCategories() {
-    return axios.get(`https://ecommerce.routemisr.com/api/v1/categories`);
-  }
-  let { data, isFetching, isLoading, isError } = useQuery({
-    queryKey: ["categorySlider"],
-    queryFn: getAllCategories,
-  });
+  let { data, isLoading } = useCategories();
+
   // console.log(data?.data.data);
 
   return (
@@ -64,15 +61,15 @@ export default function CategorySlider() {
         <Loading />
       ) : (
         <Slider {...settings}>
-          {data?.data.data.map((category) => {
+          {data.map((category) => {
             return (
-              <div className="my-3" key={category._id}>
+              <div   className="my-3" key={category._id}>
                 <img
                   className="w-full  h-[290px] object-fill"
                   src={category.image}
                   alt={category.name}
                 />
-                <h3 className="text-[8px] sm:text-base">{category.name}</h3>
+                <Link to={`/category/${category._id}`} className="text-[8px] sm:text-base">{category.name}</Link>
               </div>
             );
           })}

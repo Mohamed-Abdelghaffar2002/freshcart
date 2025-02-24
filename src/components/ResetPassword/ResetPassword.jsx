@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import style from "./Login.module.css";
+import style from "./ResetPassword.module.css";
 import { useFormik } from "formik";
 import values from "./../../../node_modules/lodash-es/values";
 import * as Yup from "yup";
@@ -8,19 +8,19 @@ import getNative from "./../../../node_modules/lodash-es/_getNative";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 
-export default function Login() {
+export default function ResetPassword() {
   const [apiError, setApiError] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   let { setUserToken } = useContext(UserContext);
 
-  async function login(values) {
+  async function ResetPassword(values) {
     try {
       setApiError(null);
       setLoading(true);
-      let { data } = await axios.post(
-        "https://ecommerce.routemisr.com/api/v1/auth/signin",
+      let { data } = await axios.put(
+        "https://ecommerce.routemisr.com/api/v1/auth/resetPassword",
         values
       );
       setLoading(false);
@@ -33,29 +33,13 @@ export default function Login() {
     }
   }
 
-  // function validateForm(values) {
-  //   let errors = {};
-  //   if (!values.name) {
-  //     errors.name = "name is required.";
-  //   } else if (!/^[A-Z]\w{3,15}$/.test(values.name)) {
-  //     errors.name = "name must start with capital letter. ";
-  //   }
-
-  //   if (!values.phone) {
-  //     errors.phone = "phone is required.";
-  //   } else if (!/^01[0125][0-9]{8}$/.test(values.phone)) {
-  //     errors.phone = "phone must be egyptian number. ";
-  //   }
-
-  //   return errors;
-  // }
 
   let validationSchema = Yup.object().shape({
     email: Yup.string()
       .required("email is required")
       .email("email is invalid."),
-    password: Yup.string()
-      .required("password is required")
+    newPassword: Yup.string()
+      .required("newPassword is required")
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
         "Minimum eight characters, at least one uppercase letter, one lowercase letter and one number."
@@ -65,11 +49,11 @@ export default function Login() {
   const formik = useFormik({
     initialValues: {
       email: "",
-      password: "",
+      newPassword: "",
     },
     validationSchema: validationSchema,
     // validate: validateForm,
-    onSubmit: login,
+    onSubmit: ResetPassword,
   });
 
   return (
@@ -113,21 +97,21 @@ export default function Login() {
         </div>
         <div className="mb-2">
           <label
-            htmlFor="password"
+            htmlFor="newPassword"
             className="block mb-2 text-sm font-medium text-main dark:text-white"
           >
-            Your password:
+            Your newPassword:
           </label>
           <input
-            type="password"
-            value={formik.values.password}
+            type="text"
+            value={formik.values.newPassword}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            id="password"
+            id="newPassword"
             className="shadow-xs bg-gray-50 border border-main text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main dark:focus:border-main dark:shadow-xs-light"
             required
           />
-          {formik.errors.password && formik.touched.password && (
+          {formik.errors.newPassword && formik.touched.newPassword && (
             <p className="mt-2 mb-0 text-sm text-red-600 dark:text-red-500">
               <span className="font-medium">
                 <svg
@@ -139,7 +123,7 @@ export default function Login() {
                 >
                   <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
                 </svg>
-                {formik.errors.password}
+                {formik.errors.newPassword}
               </span>
             </p>
           )}
@@ -166,12 +150,7 @@ export default function Login() {
           </div>
         )}
 
-        <p className="text-gray-600 mb-2">
-          Forgot your password?
-          <Link to={'/forgotpassword'}  className=" text-main font-semibold hover:underline duration-500">
-            Reset it here
-          </Link>
-        </p>
+ 
         {loading ? (
           <button
             type="button"

@@ -6,6 +6,7 @@ import Loading from "../Loading/Loading";
 import { CartContext } from "../../context/CartContext";
 import { useQuery } from "@tanstack/react-query";
 import useProducts from "../../Hooks/useProducts";
+import bgImg from '../../assets/images/light-patten.svg'
 
 export default function Products() {
   const { addProductToCart } = useContext(CartContext);
@@ -23,7 +24,7 @@ export default function Products() {
             
             return (
               <div
-                className="px-2 pt-0 mt-0 xl:w-1/6 lg:w-1/4 md:w-1/3 sm:w-1/2"
+                className={`px-2    pt-0 mt-0 xl:w-1/6 lg:w-1/4 md:w-1/3 sm:w-1/2`}
                 key={product.id}
               >
                 <div>

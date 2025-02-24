@@ -19,7 +19,7 @@ export function CartContextProvider({ children }) {
       // console.log(data);
       toast.success(data.message, { position: "bottom-right" });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       toast.error(error.message, { position: "bottom-right" });
     }
   }
@@ -34,7 +34,7 @@ export function CartContextProvider({ children }) {
       // console.log(data);
       toast.success(data.status, { position: "top-center", duration: 800});
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       toast.error(error.status, { position: "top-center", duration: 800 });
     }
   }
@@ -48,7 +48,7 @@ export function CartContextProvider({ children }) {
       // console.log(data);
       toast.success(data.status, { position: "top-center", duration: 800});
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       toast.error(error.status, { position: "top-center", duration: 800 });
     }
   }
@@ -63,7 +63,7 @@ export function CartContextProvider({ children }) {
       setCart(data);
       // console.log(data);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   }
 

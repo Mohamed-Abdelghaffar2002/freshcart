@@ -18,6 +18,12 @@ import CheckOut from "./components/CheckOut/CheckOut";
 import AllOrders from "./components/AllOrders/AllOrders";
 import { Query } from "./../node_modules/@tanstack/query-core/src/query";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ProductByBrad from "./components/ProductByBrad/ProductByBrad";
+import ProductByCategoerie from "./components/ProductByCategory/ProductByCategory";
+import ProductByCategory from "./components/ProductByCategory/ProductByCategory";
+import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
+import ResetPassword from "./components/ResetPassword/ResetPassword";
+import VerifyResetCode from "./components/VerifyResetCode/VerifyResetCode";
 
 const routers = createBrowserRouter([
   {
@@ -26,6 +32,9 @@ const routers = createBrowserRouter([
     children: [
       { path: "register", element: <Register /> },
       { path: "login", element: <Login /> },
+      { path: "forgotpassword", element: <ForgotPassword /> },
+      { path: "resetpassword", element: <ResetPassword /> },
+      { path: "verifycode", element: <VerifyResetCode /> },
       {
         index: true,
         element: (
@@ -79,6 +88,22 @@ const routers = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <AllOrders />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "brand/:id",
+        element: (
+          <ProtectedRoute>
+            <ProductByBrad />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "category/:id",
+        element: (
+          <ProtectedRoute>
+            <ProductByCategory />
           </ProtectedRoute>
         ),
       },

@@ -25,6 +25,7 @@ export default function useProducts() {
     queryFn: getProducts,
     select: (data) => data.data.data,
   });
+
   // console.log(data);
   return response;
 }

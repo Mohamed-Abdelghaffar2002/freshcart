@@ -9,7 +9,7 @@ import useProducts from "../../Hooks/useProducts";
 
 export default function RecentProducts() {
   const { addProductToCart } = useContext(CartContext);
-
+const [wishlist, setWishlist] = useState(false)
   let { data, isLoading } = useProducts();
 
   return (
@@ -22,15 +22,15 @@ export default function RecentProducts() {
           {data.map((product) => {
             return (
               <div
-                className="px-2 pt-0 mt-0 xl:w-1/6 lg:w-1/4 md:w-1/3 sm:w-1/2"
+                className="px-2 pt-0 w-1/2 mt-0 xl:w-1/6 lg:w-1/5 md:w-1/4 sm:w-1/3"
                 key={product.id}
               >
-                <div>
-                  <div className="product p-2 pt-0 mt-0 rounded-lg ">
+                <div className="bg-white rounded-md">
+                  <div className="product  p-2 pt-0 mt-0 rounded-lg ">
                     <Link to={`/productdetails/${product.id}`}>
-                      <div className=" overflow-hidden">
+                      <div className=" overflow-hidden rounded-lg" >
                         <img
-                          className="w-full"
+                          className="w-full "
                           src={product.imageCover}
                           alt={product.title}
                         />
@@ -46,12 +46,19 @@ export default function RecentProducts() {
                         </span>
                       </div>
                     </Link>
-                    <button
-                      onClick={() => addProductToCart(product.id)}
-                      className="btn w-full"
-                    >
-                      Add to cart
-                    </button>
+                    <div className="center">
+                      <button
+                        onClick={() => addProductToCart(product.id)}
+                        className="btn w-9/12"
+                      >
+                        Add to cart
+                      </button>
+                      <div onClick={()=>wishlist(true)} className={` w-2/12 text-white cursor-pointer center btn group px-3.5 py-1.5 bg-light icon rounded-md`}>
+                        <div>
+                          <i className=" text-inherit group-hover:text-red-600 duration-[400ms]   fa-solid fa-heart fa-lg"></i>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
