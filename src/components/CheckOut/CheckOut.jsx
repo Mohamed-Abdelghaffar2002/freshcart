@@ -15,18 +15,18 @@ export default function CheckOut() {
   let { cart } = useContext(CartContext);
 
   async function CheckOut(shippingAddress) {
-    console.log(shippingAddress);
+    // console.log(shippingAddress);
 
     if (shippingAddress.paymentMethod === "cashPayment") {
       await CashPayment(shippingAddress);
-      console.log(1);
+      // console.log(1);
     } else if (shippingAddress.paymentMethod === "onlinePayment") {
       await OnlinePayment(shippingAddress);
-      console.log(0);
+      // console.log(0);
     }
   }
   async function OnlinePayment(shippingAddress) {
-    console.log(shippingAddress);
+    // console.log(shippingAddress);
 
     try {
       setLoading(true);
@@ -36,10 +36,10 @@ export default function CheckOut() {
         { headers: { token: localStorage.getItem("userToken") } }
       );
       setLoading(false);
-      console.log(data);
+      // console.log(data);
       location.href = data.session.url;
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setLoading(false);
     }
   }
@@ -55,7 +55,7 @@ export default function CheckOut() {
       // console.log(data);
       navigate("/allorders");
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setLoading(false);
     }
   }
