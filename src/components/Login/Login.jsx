@@ -57,8 +57,8 @@ export default function Login() {
     password: Yup.string()
       .required("password is required")
       .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
-        "Minimum eight characters, at least one uppercase letter, one lowercase letter and one number."
+        /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])[A-Za-z\d#?!@$%^&*_)(-]{8,}$/,
+        "Minimum eight and maximum 10 characters, at least one uppercase letter, one lowercase letter, one number and one special character."
       ),
   });
 
