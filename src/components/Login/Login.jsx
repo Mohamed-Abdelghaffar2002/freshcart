@@ -58,7 +58,7 @@ export default function Login() {
       .required("password is required")
       .matches(
         /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])[A-Za-z\d#?!@$%^&*_)(-]{8,}$/,
-        "Minimum eight and maximum 10 characters, at least one uppercase letter, one lowercase letter, one number and one special character."
+        "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character."
       ),
   });
 
