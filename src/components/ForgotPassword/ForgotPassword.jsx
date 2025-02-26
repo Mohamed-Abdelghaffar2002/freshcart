@@ -47,13 +47,13 @@ export default function ForgotPassword() {
   return (
     <>
       <form
-        className="md:w-1/2 mx-auto py-[26.5px]"
+        className="md:w-1/2 mx-auto py-[71.3px]"
         onSubmit={formik.handleSubmit}
       >
         <div className="mb-5">
           <label
             htmlFor="email"
-            className="block mb-2 text-sm font-medium text-main dark:text-white"
+            className="block mb-2 text-sm font-medium text-main "
           >
             Your email:
           </label>
@@ -63,11 +63,11 @@ export default function ForgotPassword() {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             id="email"
-            className="shadow-xs bg-gray-50 border border-main text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main dark:focus:border-main dark:shadow-xs-light"
+            className="shadow-xs bg-gray-50 border border-main text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 "
             required
           />
           {formik.errors.email && formik.touched.email && (
-            <p className="mt-2 mb-0 text-sm text-red-600 dark:text-red-500">
+            <p className="mt-2 mb-0 text-sm text-red-600 ">
               <span className="font-medium">
                 <svg
                   className="shrink-0 inline w-4 h-4 me-3"
@@ -86,7 +86,7 @@ export default function ForgotPassword() {
 
         {apiError && (
           <div
-            className="flex items-center p-4  text-sm text-red-600 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+            className="flex items-center p-4  text-sm text-red-600 rounded-lg bg-red-50 "
             role="alert"
           >
             <svg
@@ -108,14 +108,14 @@ export default function ForgotPassword() {
         {loading ? (
           <button
             type="button"
-            className="text-white button text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="text-white button text-sm px-3 py-2.5 text-center "
           >
             <i className="fas fa-spinner fa-spin"></i> Loading...
           </button>
         ) : (
           <button
             type="submit"
-            className="text-white button text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="text-white button text-sm px-5 py-2.5 text-center "
           >
             submit
           </button>

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function Categories() {
   let { data, isLoading } = useCategories();
-  console.log(data);
+  // console.log(data);
 
   return (
     <>

@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Loading from "../Loading/Loading";
 import { CartContext } from "../../context/CartContext";
+import { WishlistContext } from "../../context/WishlistContext";
 
 export default function ProductDetails() {
   const settings = {
@@ -21,7 +22,7 @@ export default function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
-
+  const { addProductToWishlist,wishlistIds } = useContext(WishlistContext);
   const { addProductToCart } = useContext(CartContext);
 
   async function getProduct(productId) {
@@ -32,9 +33,7 @@ export default function ProductDetails() {
     setLoading(false);
   }
   useEffect(() => {
-
     getProduct(id);
-    
   }, []);
   return (
     <>
@@ -42,7 +41,7 @@ export default function ProductDetails() {
         <Loading />
       ) : (
         <div className="center p-8 ">
-          <div className="w-1/4">
+          <div className="sm:w-1/4 w-full">
             <Slider {...settings}>
               {product.images.map((image, index) => {
                 return (
@@ -56,7 +55,7 @@ export default function ProductDetails() {
               })}
             </Slider>
           </div>
-          <div className="w-3/4 p-6">
+          <div className="sm:w-3/4 w-full p-6">
             <h2>{product.title}</h2>
             <p className="m-4 text-gray-500">{product.description}</p>
             <div className="py-2">
@@ -69,7 +68,26 @@ export default function ProductDetails() {
                 </span>
               </div>
             </div>
-            <button onClick={()=>addProductToCart(id)} className="btn w-full">Add to cart</button>
+            <div className="flex items-center justify-between">
+              <div className="w-11/12 pe-4">
+                <button onClick={() => addProductToCart(id)} className="w-full">
+                  Add to cart
+                </button>
+              </div>
+
+              <div
+                onClick={() => addProductToWishlist(product.id)}
+                className={` w-1/12  ${
+                  wishlistIds?.includes(product.id)
+                    ? "text-red-700"
+                    : "text-white"
+                }  cursor-pointer center btn group px-3.5 py-1.5 bg-light icon rounded-md`}
+              >
+                <div>
+                  <i className=" text-inherit group-hover:text-red-700 duration-[400ms]   fa-solid fa-heart fa-lg"></i>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}

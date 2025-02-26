@@ -41,7 +41,7 @@ export default function VerifyResetCode() {
   return (
     <>
       <form
-        className="md:w-1/2 mx-auto py-[26.5px]"
+        className="md:w-1/2 mx-auto py-[71.3px]"
         onSubmit={formik.handleSubmit}
       >
         <div className="mb-5">

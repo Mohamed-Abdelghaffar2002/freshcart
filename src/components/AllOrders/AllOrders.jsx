@@ -34,7 +34,7 @@ export default function AllOrders() {
             <p className="text-lg p-2 text-gray-600 ">
               number of orders: <span className="text-main">{data.length}</span>
             </p>
-            {data.map((order) => {
+            {data.map((order, index) => {
               return (
                 <div
                   key={order.id}
@@ -91,8 +91,8 @@ export default function AllOrders() {
                     </p>
                   </div>
 
-                  <table className=" sm:w-9/12   text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead className="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+                  <table className=" sm:w-9/12   text-sm text-left rtl:text-right text-gray-500 ">
+                    <thead className="text-xs text-gray-700 uppercase bg-gray-100  ">
                       <tr>
                         <th scope="col" className="px-4 py-3 rounded-s-lg">
                           Product
@@ -105,20 +105,20 @@ export default function AllOrders() {
                         </th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody key={index}>
                       {order.cartItems.map((item) => {
                         return (
-                          <tr className="bg-white dark:bg-gray-800 ">
+                          <tr key={item.id} className="bg-white  ">
                             <th
                               scope="row"
-                              className="px-4 flex items-center justify-start gap-4 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                              className="px-4 flex items-center justify-start gap-4 py-4 font-medium text-gray-900 whitespace-nowrap "
                             >
                               <img
                                 className=" h-12"
                                 src={item.product.imageCover}
                                 alt={item.product.title}
                               />
-                              <p className="text-wrap "> {item.product.title}</p>
+                              <p className="text-wrap ">{item.product.title}</p>
                             </th>
                             <td className="px-4 py-4">{item.count}</td>
                             <td className="px-4 py-4">
@@ -129,7 +129,7 @@ export default function AllOrders() {
                       })}
                     </tbody>
                     <tfoot>
-                      <tr className="font-semibold text-gray-900 dark:text-white">
+                      <tr className="font-semibold text-gray-900 ">
                         <th scope="row" className="px-4 py-3 text-base">
                           Total
                         </th>

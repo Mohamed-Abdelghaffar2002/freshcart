@@ -4,15 +4,19 @@ import logo from "../../assets/images/freshcart-logo.svg";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import { CartContext } from "../../context/CartContext";
+import { WishlistContext } from "../../context/WishlistContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   let { userToken, setUserToken } = useContext(UserContext);
   let { cart } = useContext(CartContext);
+  let { wishlist, setWishlistIds } = useContext(WishlistContext);
   let navigate = useNavigate();
   function logOut() {
     localStorage.removeItem("userToken");
+    localStorage.removeItem("wishlist");
     setUserToken(null);
+    setWishlistIds(null);
     navigate("/login");
   }
   return (
@@ -85,13 +89,14 @@ export default function Navbar() {
           <div className="hidden lg:flex lg:flex-1 lg:justify-end space-x-4">
             <ul className="center space-x-3">
               <li>
-                <Link target="-bank" to={"https://www.facebook.com"}>
+                <Link target="-blank" to={"https://www.facebook.com"}>
                   <i className="fab fa-facebook-f fa-lg cursor-pointer"></i>
                 </Link>
               </li>
               <li>
-                <Link target="-blank" to={"https://x.com/"}></Link>
-                <i className="fab fa-x-twitter fa-lg cursor-pointer"></i>
+                <Link target="-blank" to={"https://x.com/"}>
+                  <i className="fab fa-x-twitter fa-lg cursor-pointer"></i>
+                </Link>
               </li>
               <li>
                 <Link target="-blank" to={"https://www.instagram.com/"}>
@@ -104,25 +109,46 @@ export default function Navbar() {
                 </Link>
               </li>
               {userToken && (
-                <li className="px-2">
-                  <NavLink
-                    to={"cart"}
-                    className=" font-medium text-gray-900 text-lg"
-                  >
-                    {
-                      <div className="relative inline-flex items-center p-3 text-sm font-medium text-center text-inherit">
-                        <i className="fas fa-shopping-cart text-2xl text-inherit"></i>
-                        <div
-                          className={`${
-                            cart?.numOfCartItems == 0 && "hidden"
-                          } absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-main border-2 border-white rounded-full -top-[1px] end-[13px] dark:border-gray-900`}
-                        >
-                          {cart?.numOfCartItems}
+                <>
+                  <li>
+                    <NavLink
+                      to={"cart"}
+                      className=" font-medium text-gray-900 text-lg"
+                    >
+                      {
+                        <div className="relative inline-flex items-center ps-3 py-3 text-sm font-medium text-center text-inherit">
+                          <i className="fas fa-shopping-cart text-2xl text-inherit"></i>
+                          <div
+                            className={`${
+                              cart?.numOfCartItems == 0 && "hidden"
+                            } absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-main border-2 border-white rounded-full -top-[1px] end-[1px] `}
+                          >
+                            {cart?.numOfCartItems}
+                          </div>
                         </div>
-                      </div>
-                    }
-                  </NavLink>
-                </li>
+                      }
+                    </NavLink>
+                  </li>
+                  <li className="">
+                    <Link
+                      to={"wishlist"}
+                      className=" font-medium text-white focus:text-red-700 text-lg"
+                    >
+                      {
+                        <div className="relative inline-flex items-center pe-3 py-3 text-sm font-medium text-center text-inherit">
+                          <i className="fas fa-heart text-2xl text-inherit"></i>
+                          <div
+                            className={`${
+                              wishlist?.count == 0 && "hidden"
+                            } absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-main border-2 border-white rounded-full -top-[2px] end-[2px] `}
+                          >
+                            {wishlist?.count}
+                          </div>
+                        </div>
+                      }
+                    </Link>
+                  </li>
+                </>
               )}
             </ul>
             {userToken ? (
@@ -202,6 +228,12 @@ export default function Navbar() {
                       cart
                     </NavLink>
                     <NavLink
+                      to={"wishlist"}
+                      className="block rounded-lg  text-base/7 font-medium text-gray-900 hover:bg-gray-50"
+                    >
+                      wishlist
+                    </NavLink>
+                    <NavLink
                       to={"brands"}
                       className="block rounded-lg  text-base/7 font-medium text-gray-900 hover:bg-gray-50"
                     >
@@ -219,6 +251,12 @@ export default function Navbar() {
                     >
                       products
                     </NavLink>
+                    <NavLink
+                      to={"allorders"}
+                      className=" block rounded-lg  text-base/7 font-medium text-gray-900 hover:bg-gray-50"
+                    >
+                      all orders
+                    </NavLink>
                   </div>
                 )}
 
@@ -226,13 +264,12 @@ export default function Navbar() {
                   {userToken ? (
                     <span
                       onClick={() => logOut()}
-                      className="block rounded-lg cursor-pointer  text-base/7 font-medium text-gray-900 hover:bg-gray-50"
+                      className="block rounded-lg text-red-600 cursor-pointer  text-base/7 font-medium  hover:bg-gray-50"
                     >
                       Log Out
                     </span>
                   ) : (
                     <>
-                     
                       <NavLink
                         to={"/register"}
                         className="block rounded-lg  text-base/7 font-medium text-gray-900 hover:bg-gray-50"

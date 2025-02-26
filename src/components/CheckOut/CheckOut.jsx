@@ -79,7 +79,7 @@ export default function CheckOut() {
         <div className="mb-5">
           <label
             htmlFor="city"
-            className="block mb-2 text-sm font-medium text-main dark:text-white"
+            className="block mb-2 text-sm font-medium text-main "
           >
             Your city:
           </label>
@@ -89,14 +89,14 @@ export default function CheckOut() {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             id="city"
-            className="shadow-xs bg-gray-50 border border-main text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main dark:focus:border-main dark:shadow-xs-light"
+            className="shadow-xs bg-gray-50 border border-main text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 "
             required
           />
         </div>
         <div className="mb-5">
           <label
             htmlFor="details"
-            className="block mb-2 text-sm font-medium text-main dark:text-white"
+            className="block mb-2 text-sm font-medium text-main "
           >
             Your details:
           </label>
@@ -106,14 +106,14 @@ export default function CheckOut() {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             id="details"
-            className="shadow-xs bg-gray-50 border border-main text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main dark:focus:border-main dark:shadow-xs-light"
+            className="shadow-xs bg-gray-50 border border-main text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 "
             required
           />
         </div>
         <div className="mb-5">
           <label
             htmlFor="phone"
-            className="block mb-2 text-sm font-medium text-main dark:text-white"
+            className="block mb-2 text-sm font-medium text-main "
           >
             Your phone:
           </label>
@@ -123,7 +123,7 @@ export default function CheckOut() {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             id="phone"
-            className="shadow-xs bg-gray-50 border border-main text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main dark:focus:border-main dark:shadow-xs-light"
+            className="shadow-xs bg-gray-50 border border-main text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 "
             required
           />
         </div>
@@ -131,7 +131,7 @@ export default function CheckOut() {
         <div className="w-full mx-auto pb-4">
           <label
             htmlFor="paymentMethod"
-            className="block  mb-2 text-sm font-medium text-main dark:text-white"
+            className="block  mb-2 text-sm font-medium text-main "
           >
             Select your payment method
           </label>
@@ -141,7 +141,7 @@ export default function CheckOut() {
             onBlur={formik.handleBlur}
             required
             id="paymentMethod"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main dark:focus:border-main"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-3 "
           >
             <option value={"cashPayment"}>Cash on delivery</option>
             <option value={"onlinePayment"}>Debit/Credit card</option>
@@ -151,14 +151,14 @@ export default function CheckOut() {
         {loading ? (
           <button
             type="button"
-            className="text-white button text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="text-white button text-sm px-3 py-2.5 text-center "
           >
             <i className="fas fa-spinner fa-spin"></i> Loading...
           </button>
         ) : (
           <button
             type="submit"
-            className="text-white button text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="text-white button text-sm px-5 py-2.5 text-center "
           >
             submit
           </button>

@@ -5,11 +5,13 @@ import { CartContext } from "../../context/CartContext";
 import Loading from "../Loading/Loading";
 import useProducts from "../../Hooks/useProducts";
 import placeHolder from "../../assets/images/emptyOrders.svg";
+import { WishlistContext } from "../../context/WishlistContext";
 
 export default function ProductByCategory() {
   const { id } = useParams();
   let { data, isLoading } = useProducts();
   const { addProductToCart } = useContext(CartContext);
+  const { addProductToWishlist, wishlistIds } = useContext(WishlistContext);
   const filteredData = data?.filter((product) => product.category._id == id);
 
 
@@ -24,7 +26,7 @@ export default function ProductByCategory() {
             {filteredData.map((product) => {
               return (
                 <div
-                  className="px-2 pt-0 mt-0 xl:w-1/6 lg:w-1/4 md:w-1/3 sm:w-1/2"
+                  className="px-2 pt-0  mt-0 w-1/2 xl:w-1/6 lg:w-1/5 md:w-1/4 sm:w-1/3 bg-white"
                   key={product.id}
                 >
                   <div>
@@ -50,12 +52,26 @@ export default function ProductByCategory() {
                           </span>
                         </div>
                       </Link>
+                      <div className="center">
                       <button
                         onClick={() => addProductToCart(product.id)}
-                        className="btn w-full"
+                        className="btn w-9/12"
                       >
                         Add to cart
                       </button>
+                      <div
+                        onClick={() => addProductToWishlist(product.id)}
+                        className={` w-2/12  ${
+                          wishlistIds?.includes(product.id)
+                            ? "text-red-700"
+                            : "text-white"
+                        }  cursor-pointer center btn group px-3.5 py-1.5 bg-light icon rounded-md`}
+                      >
+                        <div>
+                          <i className=" text-inherit group-hover:text-red-700 duration-[400ms]   fa-solid fa-heart fa-lg"></i>
+                        </div>
+                      </div>
+                    </div>
                     </div>
                   </div>
                 </div>

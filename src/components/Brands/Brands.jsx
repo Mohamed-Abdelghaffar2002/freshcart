@@ -6,7 +6,7 @@ import useBrands from "../../Hooks/useBrands";
 
 export default function Categories() {
   let { data, isLoading } = useBrands();
-  console.log(data);
+  // console.log(data);
 
   return (
     <>

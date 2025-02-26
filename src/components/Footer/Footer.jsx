@@ -21,7 +21,7 @@ export default function Footer() {
             <div className="px-4 w-5/6">
               <input
                 type="email"
-                className=" w-full px-4 py-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  ps-4  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className=" w-full px-4 py-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  ps-4  "
                 placeholder="E-mail..."
               />
             </div>
@@ -29,13 +29,13 @@ export default function Footer() {
             
               <button
                 type="button"
-                className=" w-full hidden sm:inline-block text-nowrap sm:text-base text-[12px] px-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className=" w-full hidden sm:inline-block text-nowrap sm:text-base text-[12px] px-0 "
               >
                 Share App Link
               </button>
               <button
                 type="button"
-                className=" w-full  sm:hidden text-nowrap text-[12px]  px-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className=" w-full  sm:hidden text-nowrap text-[12px]  px-0 "
               >
                 Share
               </button>

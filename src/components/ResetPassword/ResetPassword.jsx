@@ -59,7 +59,7 @@ export default function ResetPassword() {
   return (
     <>
       <form
-        className="md:w-1/2 mx-auto py-[26.5px]"
+        className="md:w-1/2 mx-auto py-[32.5px]"
         onSubmit={formik.handleSubmit}
       >
         <div className="mb-5">
