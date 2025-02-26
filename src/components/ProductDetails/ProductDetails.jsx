@@ -22,7 +22,7 @@ export default function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
-  const { addProductToWishlist,wishlistIds } = useContext(WishlistContext);
+  const { addProductToWishlist, wishlistIds } = useContext(WishlistContext);
   const { addProductToCart } = useContext(CartContext);
 
   async function getProduct(productId) {

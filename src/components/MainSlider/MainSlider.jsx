@@ -23,15 +23,34 @@ export default function MainSlider() {
       <div className="flex">
         <div className="w-3/4">
           <Slider {...settings}>
-          <img src={slider1} alt="slider1" className="w-full h-[400px] object-fill" />
-          <img src={slider2} alt="slider2" className="w-full h-[400px] object-fill" />
-          <img src={slider3} alt="slider3" className="w-full h-[400px] object-fill" />
-
+            <img
+              src={slider1}
+              alt="slider1"
+              className="w-full h-[400px] object-fill"
+            />
+            <img
+              src={slider2}
+              alt="slider2"
+              className="w-full h-[400px] object-fill"
+            />
+            <img
+              src={slider3}
+              alt="slider3"
+              className="w-full h-[400px] object-fill"
+            />
           </Slider>
         </div>
         <div className="w-1/4">
-          <img className="w-full h-[200px]" src={banner1} alt="banner1 object-fill" />
-          <img className="w-full h-[200px]" src={banner2} alt="banner2 object-fill" />
+          <img
+            className="w-full h-[200px]"
+            src={banner1}
+            alt="banner1 object-fill"
+          />
+          <img
+            className="w-full h-[200px]"
+            src={banner2}
+            alt="banner2 object-fill"
+          />
         </div>
       </div>
     </>

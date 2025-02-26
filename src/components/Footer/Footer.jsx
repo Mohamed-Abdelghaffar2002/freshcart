@@ -26,7 +26,6 @@ export default function Footer() {
               />
             </div>
             <div className="w-1/6 ">
-            
               <button
                 type="button"
                 className=" w-full hidden sm:inline-block text-nowrap sm:text-base text-[12px] px-0 "
@@ -51,7 +50,9 @@ export default function Footer() {
             </div>
 
             <div className="flex  items-center justify-center gap-x-2">
-              <span className="text-[12px] sm:text-base text-nowrap">Get deliveries with FreshCart</span>
+              <span className="text-[12px] sm:text-base text-nowrap">
+                Get deliveries with FreshCart
+              </span>
               <Link
                 target="-blank"
                 to={"https://www.apple.com/eg-ar/app-store/"}

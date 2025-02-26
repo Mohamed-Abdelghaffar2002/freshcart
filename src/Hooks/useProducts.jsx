@@ -3,7 +3,6 @@ import axios from "axios";
 import React, { useContext } from "react";
 
 export default function useProducts() {
-
   // const [products, setProducts] = useState([]);
   // const [loading, setLoading] = useState(true);
 

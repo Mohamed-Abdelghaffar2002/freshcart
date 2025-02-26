@@ -67,8 +67,10 @@ export function WishlistContextProvider({ children }) {
       value={{
         addProductToWishlist,
         wishlist,
+        setWishlist,
         removeProductFromWishlist,
-        wishlistIds,setWishlistIds
+        wishlistIds,
+        setWishlistIds,
       }}
     >
       {children}

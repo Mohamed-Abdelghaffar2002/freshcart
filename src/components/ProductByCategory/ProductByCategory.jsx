@@ -14,7 +14,6 @@ export default function ProductByCategory() {
   const { addProductToWishlist, wishlistIds } = useContext(WishlistContext);
   const filteredData = data?.filter((product) => product.category._id == id);
 
-
   return (
     <>
       {isLoading ? (
@@ -53,25 +52,25 @@ export default function ProductByCategory() {
                         </div>
                       </Link>
                       <div className="center">
-                      <button
-                        onClick={() => addProductToCart(product.id)}
-                        className="btn w-9/12"
-                      >
-                        Add to cart
-                      </button>
-                      <div
-                        onClick={() => addProductToWishlist(product.id)}
-                        className={` w-2/12  ${
-                          wishlistIds?.includes(product.id)
-                            ? "text-red-700"
-                            : "text-white"
-                        }  cursor-pointer center btn group px-3.5 py-1.5 bg-light icon rounded-md`}
-                      >
-                        <div>
-                          <i className=" text-inherit group-hover:text-red-700 duration-[400ms]   fa-solid fa-heart fa-lg"></i>
+                        <button
+                          onClick={() => addProductToCart(product.id)}
+                          className="btn w-9/12"
+                        >
+                          Add to cart
+                        </button>
+                        <div
+                          onClick={() => addProductToWishlist(product.id)}
+                          className={` w-2/12  ${
+                            wishlistIds?.includes(product.id)
+                              ? "text-red-700"
+                              : "text-white"
+                          }  cursor-pointer center btn group px-3.5 py-1.5 bg-light icon rounded-md`}
+                        >
+                          <div>
+                            <i className=" text-inherit group-hover:text-red-700 duration-[400ms]   fa-solid fa-heart fa-lg"></i>
+                          </div>
                         </div>
                       </div>
-                    </div>
                     </div>
                   </div>
                 </div>

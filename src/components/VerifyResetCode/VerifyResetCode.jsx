@@ -29,8 +29,6 @@ export default function VerifyResetCode() {
     }
   }
 
-
-
   const formik = useFormik({
     initialValues: {
       resetCode: "",

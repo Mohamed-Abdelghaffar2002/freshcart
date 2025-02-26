@@ -33,7 +33,6 @@ export default function ResetPassword() {
     }
   }
 
-
   let validationSchema = Yup.object().shape({
     email: Yup.string()
       .required("email is required")
@@ -150,7 +149,6 @@ export default function ResetPassword() {
           </div>
         )}
 
- 
         {loading ? (
           <button
             type="button"

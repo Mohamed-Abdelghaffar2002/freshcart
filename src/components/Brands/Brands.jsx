@@ -17,14 +17,18 @@ export default function Categories() {
         <div className="center  py-8 gap-y-4 gap-x-4">
           {data?.map((category) => {
             return (
-              <Link to={`/brand/${category._id}`} className="my-3 bg-light category p-2 rounded-md" key={category._id}>
-              <img
-                className="w-[230px] rounded-md  h-[230px] object-fill"
-                src={category.image}
-                alt={category.name}
-              />
-              <h3 className="text-[8px] sm:text-base">{category.name}</h3>
-            </Link>
+              <Link
+                to={`/brand/${category._id}`}
+                className="my-3 bg-light category p-2 rounded-md"
+                key={category._id}
+              >
+                <img
+                  className="w-[230px] rounded-md  h-[230px] object-fill"
+                  src={category.image}
+                  alt={category.name}
+                />
+                <h3 className="text-[8px] sm:text-base">{category.name}</h3>
+              </Link>
             );
           })}
         </div>

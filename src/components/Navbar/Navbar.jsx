@@ -10,11 +10,12 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   let { userToken, setUserToken } = useContext(UserContext);
   let { cart } = useContext(CartContext);
-  let { wishlist, setWishlistIds } = useContext(WishlistContext);
+  let { wishlist, setWishlist, setWishlistIds } = useContext(WishlistContext);
   let navigate = useNavigate();
   function logOut() {
     setUserToken(null);
     setWishlistIds(null);
+    setWishlist(null);
     localStorage.removeItem("userToken");
     localStorage.removeItem("wishlist");
     navigate("/login");

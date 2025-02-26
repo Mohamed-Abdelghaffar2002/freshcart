@@ -32,7 +32,7 @@ export function CartContextProvider({ children }) {
       );
       setCart(data);
       // console.log(data);
-      toast.success(data.status, { position: "top-center", duration: 800});
+      toast.success(data.status, { position: "top-center", duration: 800 });
     } catch (error) {
       // console.log(error);
       toast.error(error.status, { position: "top-center", duration: 800 });
@@ -46,7 +46,7 @@ export function CartContextProvider({ children }) {
       );
       setCart(data);
       // console.log(data);
-      toast.success(data.status, { position: "top-center", duration: 800});
+      toast.success(data.status, { position: "top-center", duration: 800 });
     } catch (error) {
       // console.log(error);
       toast.error(error.status, { position: "top-center", duration: 800 });
@@ -73,7 +73,12 @@ export function CartContextProvider({ children }) {
 
   return (
     <CartContext.Provider
-      value={{ addProductToCart, cart, updateProductAtCart ,removeProductFromCart}}
+      value={{
+        addProductToCart,
+        cart,
+        updateProductAtCart,
+        removeProductFromCart,
+      }}
     >
       {children}
     </CartContext.Provider>

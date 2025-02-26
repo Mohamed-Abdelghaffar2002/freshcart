@@ -21,21 +21,11 @@ export default function Cart() {
             <table className="w-full  text-sm text-left rtl:text-right text-gray-500 ">
               <thead className="text-xs  text-gray-700 uppercase bg-gray-50  ">
                 <tr>
-                  <td  className="px-16 py-3">
-                  Product
-                  </td>
-                  <td  className=" py-1 sm:px-6 sm:py-3 ">
-                    title
-                  </td>
-                  <td  className=" py-1 sm:px-6 sm:py-3 ">
-                    Qty
-                  </td>
-                  <td  className=" py-1 sm:px-6 sm:py-3 ">
-                    Price
-                  </td>
-                  <td  className=" py-1 sm:px-6 sm:py-3 ">
-                    Action
-                  </td>
+                  <td className="px-16 py-3">Product</td>
+                  <td className=" py-1 sm:px-6 sm:py-3 ">title</td>
+                  <td className=" py-1 sm:px-6 sm:py-3 ">Qty</td>
+                  <td className=" py-1 sm:px-6 sm:py-3 ">Price</td>
+                  <td className=" py-1 sm:px-6 sm:py-3 ">Action</td>
                 </tr>
               </thead>
               <tbody>

@@ -14,7 +14,7 @@ export default function Loading() {
           margin={20}
           size={60}
           speedMultiplier={0.8}
-        />{" "}
+        />
       </div>
     </>
   );

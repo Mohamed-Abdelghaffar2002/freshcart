@@ -168,7 +168,10 @@ export default function Login() {
 
         <p className="text-gray-600 mb-2">
           Forgot your password?
-          <Link to={'/forgotpassword'}  className=" text-main font-semibold hover:underline duration-500">
+          <Link
+            to={"/forgotpassword"}
+            className=" text-main font-semibold hover:underline duration-500"
+          >
             Reset it here
           </Link>
         </p>

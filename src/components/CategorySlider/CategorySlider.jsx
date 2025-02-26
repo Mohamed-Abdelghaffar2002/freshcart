@@ -63,13 +63,18 @@ export default function CategorySlider() {
         <Slider {...settings}>
           {data.map((category) => {
             return (
-              <div   className="my-3" key={category._id}>
+              <div className="my-3" key={category._id}>
                 <img
                   className="w-full  h-[290px] object-fill"
                   src={category.image}
                   alt={category.name}
                 />
-                <Link to={`/category/${category._id}`} className="text-[8px] block sm:text-base">{category.name}</Link>
+                <Link
+                  to={`/category/${category._id}`}
+                  className="text-[8px] block sm:text-base"
+                >
+                  {category.name}
+                </Link>
               </div>
             );
           })}
