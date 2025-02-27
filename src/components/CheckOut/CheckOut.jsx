@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import style from "./CheckOut.module.css";
 import { useFormik } from "formik";
 import values from "./../../../node_modules/lodash-es/values";
@@ -58,10 +58,9 @@ export default function CheckOut() {
       );
       setLoading(false);
       // console.log(data);
-      
+
       navigate("/allorders");
       getProductsCart();
-
     } catch (err) {
       // console.log(err);
       setLoading(false);
@@ -78,6 +77,12 @@ export default function CheckOut() {
     },
     onSubmit: CheckOut,
   });
+
+  useEffect(() => {
+    return () => {
+      getProductsCart(); // Runs when the component unmounts
+    };
+  }, []);
 
   return (
     <>

@@ -78,6 +78,7 @@ export function CartContextProvider({ children }) {
         cart,
         updateProductAtCart,
         removeProductFromCart,
+        getProductsCart,
       }}
     >
       {children}
