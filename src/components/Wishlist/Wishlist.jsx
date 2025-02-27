@@ -10,7 +10,7 @@ export default function Wishlist() {
   return (
     <>
       {wishlist ? (
-        wishlist.count == 0 ? (
+        wishlist?.count == 0 ? (
           <div className="center pt-8 ">
             {
               <img
@@ -39,7 +39,7 @@ export default function Wishlist() {
               </tr>
             </thead>
             <tbody>
-              {wishlist.data.map((item) => {
+              {wishlist?.data.map((item) => {
                 return (
                   <tr key={item.id} className="bg-white  ">
                     <td className="sm:px-4 py-4">

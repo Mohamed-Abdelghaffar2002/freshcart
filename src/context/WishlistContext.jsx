@@ -19,7 +19,7 @@ export function WishlistContextProvider({ children }) {
       getProductsWishlist();
       // console.log(data);
       localStorage.setItem("wishlist", data.data);
-      setWishlistIds(data.data.toString());
+      setWishlistIds(data?.data?.toString());
       toast.success(data.message, { position: "bottom-right" });
     } catch (error) {
       // console.log(error);
@@ -34,8 +34,8 @@ export function WishlistContextProvider({ children }) {
         { headers }
       );
       getProductsWishlist();
-      localStorage.setItem("wishlist", data.data.toString());
-      setWishlistIds(data.data);
+      localStorage.setItem("wishlist", data?.data?.toString());
+      setWishlistIds(data?.data);
       // console.log(data);
       toast.success(data.message, { position: "top-center", duration: 800 });
     } catch (error) {
@@ -59,7 +59,7 @@ export function WishlistContextProvider({ children }) {
 
   useEffect(() => {
     getProductsWishlist();
-    setWishlistIds(localStorage.getItem("wishlist")?.split(","));
+    setWishlistIds(localStorage?.getItem("wishlist")?.split(","));
   }, []);
 
   return (

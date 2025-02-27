@@ -12,7 +12,7 @@ import { CartContext } from "../../context/CartContext";
 export default function CheckOut() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  let { cart } = useContext(CartContext);
+  let { cart, getProductsCart } = useContext(CartContext);
 
   async function CheckOut(shippingAddress) {
     // console.log(shippingAddress);
@@ -37,11 +37,13 @@ export default function CheckOut() {
       );
       setLoading(false);
       // console.log(data);
+
       location.href = data.session.url;
     } catch (err) {
       // console.log(err);
       setLoading(false);
     }
+    getProductsCart()
   }
   async function CashPayment(shippingAddress) {
     try {
@@ -54,10 +56,12 @@ export default function CheckOut() {
       setLoading(false);
       // console.log(data);
       navigate("/allorders");
+      getProductsCart();
     } catch (err) {
       // console.log(err);
       setLoading(false);
     }
+    getProductsCart();
   }
 
   const formik = useFormik({
