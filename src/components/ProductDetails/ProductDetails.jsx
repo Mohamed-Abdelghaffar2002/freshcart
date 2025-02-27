@@ -6,7 +6,6 @@ import axios from "axios";
 import Loading from "../Loading/Loading";
 import { CartContext } from "../../context/CartContext";
 import { WishlistContext } from "../../context/WishlistContext";
-
 export default function ProductDetails() {
   const settings = {
     dots: false,
