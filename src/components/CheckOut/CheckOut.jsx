@@ -33,7 +33,7 @@ export default function CheckOut() {
       // http://localhost:5173
       setLoading(true);
       let { data } = await axios.post(
-        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.cartId}?url=https://freshcart-xi.vercel.app/allorders
+        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.cartId}?url=https://freshcart-xi.vercel.app
 `,
         { shippingAddress },
         { headers: { token: localStorage.getItem("userToken") } }
