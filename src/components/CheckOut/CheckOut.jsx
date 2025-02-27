@@ -46,7 +46,7 @@ export default function CheckOut() {
       // console.log(err);
       setLoading(false);
     }
-    getProductsCart();
+    // getProductsCart();
   }
   async function CashPayment(shippingAddress) {
     try {
@@ -58,9 +58,9 @@ export default function CheckOut() {
       );
       setLoading(false);
       // console.log(data);
-      getProductsCart();
       
       navigate("/allorders");
+      getProductsCart();
 
     } catch (err) {
       // console.log(err);
