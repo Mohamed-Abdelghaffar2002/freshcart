@@ -6,7 +6,7 @@ export let WishlistContext = createContext();
 
 export function WishlistContextProvider({ children }) {
   const headers = { token: localStorage.getItem("userToken") };
-  const [wishlist, setWishlist] = useState(null);
+  const [wishlist, setWishlist] = useState([]);
   const [wishlistIds, setWishlistIds] = useState([]);
 
   async function addProductToWishlist(productId) {
@@ -16,10 +16,19 @@ export function WishlistContextProvider({ children }) {
         { productId },
         { headers }
       );
-      getProductsWishlist();
-      // console.log(data);
-      localStorage.setItem("wishlist", data.data);
-      setWishlistIds(data?.data?.toString());
+
+      let existingWishlist = localStorage?.getItem("wishlist");
+
+      // Convert to an array (if it exists)
+      existingWishlist = existingWishlist ? existingWishlist.split(",") : [];
+      const updatedWishlist = Array.from(
+        new Set([...existingWishlist, ...wishlistIds])
+      );
+      if (updatedWishlist.join(",") !== existingWishlist.join(",")) {
+        localStorage.setItem("wishlist", updatedWishlist.join(","));
+        setWishlistIds(updatedWishlist);
+      }
+
       toast.success(data.message, { position: "bottom-right" });
     } catch (error) {
       // console.log(error);
@@ -36,7 +45,7 @@ export function WishlistContextProvider({ children }) {
       getProductsWishlist();
       localStorage.setItem("wishlist", data?.data?.toString());
       setWishlistIds(data?.data);
-      // console.log(data);
+
       toast.success(data.message, { position: "top-center", duration: 800 });
     } catch (error) {
       // console.log(error);
@@ -44,22 +53,41 @@ export function WishlistContextProvider({ children }) {
     }
   }
 
-  async function getProductsWishlist(productId) {
+  async function getProductsWishlist() {
     try {
       const { data } = await axios.get(
         `https://ecommerce.routemisr.com/api/v1/wishlist`,
-
         { headers }
       );
-      setWishlist(data);
+      console.log("1")
+      const filteredWishlist = data.data?.map((prod) => ({
+        id: prod.id,
+        title: prod.title,
+        imageCover: prod.imageCover,
+        price: prod.price,
+      })) || [];
+  
+      console.log("Wishlist Items:", filteredWishlist);
+  
+      // Store only IDs in localStorage
+      const wishlistIds = filteredWishlist?.map((prod) => prod.id).join(",");
+      const existingWishlist = localStorage?.getItem("wishlist");
+  
+      if (wishlistIds !== existingWishlist) {
+        localStorage.setItem("wishlist", wishlistIds);
+        setWishlistIds(wishlistIds);
+      }
+  
+      // Update state with filtered data
+      setWishlist(filteredWishlist);
     } catch (error) {
-      // console.log(error);
+      console.log(error);
+      setWishlist([])
     }
   }
 
   useEffect(() => {
     getProductsWishlist();
-    setWishlistIds(localStorage?.getItem("wishlist")?.split(","));
   }, []);
 
   return (
