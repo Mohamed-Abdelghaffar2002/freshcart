@@ -28,9 +28,9 @@ export default function CheckOut() {
   async function OnlinePayment(shippingAddress) {
     // console.log(shippingAddress);
 
+    // https://freshcart-xi.vercel.app/allorders
+    // http://localhost:5173
     try {
-      // https://freshcart-xi.vercel.app/allorders
-      // http://localhost:5173
       setLoading(true);
       let { data } = await axios.post(
         `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.cartId}?url=https://freshcart-xi.vercel.app
@@ -46,7 +46,7 @@ export default function CheckOut() {
       // console.log(err);
       setLoading(false);
     }
-    getProductsCart()
+    getProductsCart();
   }
   async function CashPayment(shippingAddress) {
     try {
@@ -58,8 +58,8 @@ export default function CheckOut() {
       );
       setLoading(false);
       // console.log(data);
-      navigate("/allorders");
       getProductsCart();
+      navigate("/allorders");
     } catch (err) {
       // console.log(err);
       setLoading(false);
