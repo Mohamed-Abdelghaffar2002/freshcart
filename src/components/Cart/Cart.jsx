@@ -17,15 +17,15 @@ export default function Cart() {
             {<img className="w-full sm:w-1/2" src={img} alt="empty cart" />}
           </div>
         ) : (
-          <div className="relative pb-8 bg-white pt-2 overflow-x-auto shadow-md sm:rounded-lg">
+          <div className="relative pb-8  bg-white pt-2 overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full  text-sm text-left rtl:text-right text-gray-500 ">
               <thead className="text-xs  text-gray-700 uppercase bg-gray-50  ">
                 <tr>
-                  <td className="px-16 py-3">Product</td>
-                  <td className=" py-1 sm:px-6 sm:py-3 ">title</td>
-                  <td className=" py-1 sm:px-6 sm:py-3 ">Qty</td>
-                  <td className=" py-1 sm:px-6 sm:py-3 ">Price</td>
-                  <td className=" py-1 sm:px-6 sm:py-3 ">Action</td>
+                  <td className=" py-3 ">Product</td>
+                  <td className=" py-1 sm:px-6 sm:py-3  ">title</td>
+                  <td className=" py-1 sm:px-6 sm:py-3  ">Qty</td>
+                  <td className=" py-1 sm:px-6 sm:py-3  ">Price</td>
+                  <td className=" py-1 sm:px-6 sm:py-3  ">Action</td>
                 </tr>
               </thead>
               <tbody>
@@ -35,14 +35,14 @@ export default function Cart() {
                       className="bg-white border-b   border-gray-200 hover:bg-gray-50 "
                       key={index}
                     >
-                      <td className="p-2 sm:p-4">
+                      <td className=" p-2 sm:p-4 ">
                         <img
                           src={item.product.imageCover}
                           className="w-16 md:w-32 max-w-full max-h-full"
                           alt={item.product.title}
                         />
                       </td>
-                      <td className="  sm:px-6 py-1 sm:py-4 font-semibold text-gray-900 ">
+                      <td className=" text-wrap sm:px-6 py-1 sm:py-4 sm:font-semibold text-gray-900 ">
                         {item.product.title}
                       </td>
                       <td className="  sm:px-6 py-1 sm:py-4">
@@ -120,7 +120,7 @@ export default function Cart() {
                           onClick={() => removeProductFromCart(item.product.id)}
                           className=" bg-transparent focus:ring-transparent hover:underline hover:bg-transparent sm:font-medium text-red-600"
                         >
-                          Remove
+                          <i class="fa-solid fa-trash text-red-600 sm:text-2xl"></i>
                         </button>
                       </td>
                     </tr>

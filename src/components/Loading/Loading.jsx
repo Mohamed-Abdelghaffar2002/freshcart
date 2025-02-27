@@ -12,7 +12,7 @@ export default function Loading() {
           cssOverride={{}}
           loading
           margin={20}
-          size={60}
+          size={56}
           speedMultiplier={0.8}
         />
       </div>
