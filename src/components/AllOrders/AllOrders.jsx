@@ -38,9 +38,9 @@ export default function AllOrders() {
               return (
                 <div
                   key={order.id}
-                  className="relative sm:p-4 center flex-start bg-slate-50 border-2 shadow-sm border-main/50 rounded-md m-4  overflow-x-auto"
+                  className="relative md:p-4  center flex-start bg-slate-50 border-2 shadow-md border-main/50 rounded-md m-4  overflow-x-auto"
                 >
-                  <div className=" ps-6 py-2 flex sm:flex-none flex-wrap  sm:w-3/12">
+                  <div className=" ps-6 py-2 flex md:flex-none flex-wrap  md:w-3/12">
                     <p className="text-base py-1 capitalize w-full  font-semibold">
                       order id:
                       <span className="text-gray-700  ps-2 font-normal">
@@ -91,7 +91,7 @@ export default function AllOrders() {
                     </p>
                   </div>
 
-                  <table className=" sm:w-9/12   text-sm text-left rtl:text-right text-gray-500 ">
+                  <table className=" md:w-9/12 w-full  text-md text-left rtl:text-right text-gray-500 ">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-100  ">
                       <tr>
                         <th scope="col" className="px-4 py-3 rounded-s-lg">
@@ -149,7 +149,7 @@ export default function AllOrders() {
             You don't have any orders yet.
           </p>
           <img
-            className="w-full m-auto sm:w-1/2"
+            className="w-full m-auto md:w-1/2"
             src={placeHolder}
             alt="no orders"
           />
