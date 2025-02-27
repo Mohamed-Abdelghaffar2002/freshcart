@@ -16,7 +16,6 @@ export function WishlistContextProvider({ children }) {
         { productId },
         { headers }
       );
-      getProductsWishlist();
       // console.log(data);
       localStorage.setItem("wishlist", data.data);
       setWishlistIds(data?.data?.toString());
@@ -33,7 +32,6 @@ export function WishlistContextProvider({ children }) {
         `https://ecommerce.routemisr.com/api/v1/wishlist/${productId}`,
         { headers }
       );
-      getProductsWishlist();
       localStorage.setItem("wishlist", data?.data?.toString());
       setWishlistIds(data?.data);
       // console.log(data);

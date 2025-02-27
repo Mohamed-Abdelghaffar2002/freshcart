@@ -121,7 +121,7 @@ export default function Navbar() {
                           <i className="fas fa-shopping-cart text-2xl text-inherit"></i>
                           <div
                             className={`${
-                              cart?.numOfCartItems == 0 && "hidden"
+                              cart?.numOfCartItems == 0 ? "hidden" : ""
                             } absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-main border-2 border-white rounded-full -top-[1px] end-[1px] `}
                           >
                             {cart?.numOfCartItems}
@@ -140,7 +140,7 @@ export default function Navbar() {
                           <i className="fas fa-heart text-2xl text-inherit"></i>
                           <div
                             className={`${
-                              wishlist?.count == 0 && "hidden"
+                              wishlist?.count == 0 ? "hidden" : ""
                             } absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-main border-2 border-white rounded-full -top-[2px] end-[2px] `}
                           >
                             {wishlist?.count}
