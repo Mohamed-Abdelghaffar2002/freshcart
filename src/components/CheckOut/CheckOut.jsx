@@ -59,7 +59,9 @@ export default function CheckOut() {
       setLoading(false);
       // console.log(data);
       getProductsCart();
+      
       navigate("/allorders");
+
     } catch (err) {
       // console.log(err);
       setLoading(false);
