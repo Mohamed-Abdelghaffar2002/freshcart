@@ -7,7 +7,7 @@ export let WishlistContext = createContext();
 export function WishlistContextProvider({ children }) {
   const headers = { token: localStorage.getItem("userToken") };
   const [wishlist, setWishlist] = useState({});
-  const [wishlistIds, setWishlistIds] = useState([]);
+  // const [wishlistIds, setWishlistIds] = useState([]);
 
   async function addProductToWishlist(productId) {
     try {
@@ -84,8 +84,8 @@ export function WishlistContextProvider({ children }) {
         wishlist,
         setWishlist,
         removeProductFromWishlist,
-        wishlistIds,
-        setWishlistIds,
+        // wishlistIds,
+        // setWishlistIds,
       }}
     >
       {children}
