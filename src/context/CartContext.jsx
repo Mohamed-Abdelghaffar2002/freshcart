@@ -1,10 +1,13 @@
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext,useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { UserContext } from "./UserContext";
 
 export let CartContext = createContext();
 
 export function CartContextProvider({ children }) {
+  const { userToken } = useContext(UserContext);
+  const token = localStorage.getItem("userToken");
   const headers = { token: localStorage.getItem("userToken") };
   const [cart, setCart] = useState(null);
 
@@ -68,8 +71,10 @@ export function CartContextProvider({ children }) {
   }
 
   useEffect(() => {
-    getProductsCart();
-  }, []);
+    if (userToken) {
+      getProductsCart();
+    }
+  }, [userToken]);
 
   return (
     <CartContext.Provider

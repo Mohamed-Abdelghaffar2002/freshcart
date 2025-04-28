@@ -11,6 +11,9 @@
   --font-family: "Encode Sans Expanded", sans-serif;
   --rating-color: #ffc908;
 }
+body{
+  background-image: url(../src/assets/images/light-patten.svg);
+}
 a {
   text-decoration: none;
   color: inherit;

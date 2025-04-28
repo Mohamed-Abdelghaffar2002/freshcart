@@ -25,8 +25,7 @@ import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import ResetPassword from "./components/ResetPassword/ResetPassword";
 import VerifyResetCode from "./components/VerifyResetCode/VerifyResetCode";
 import { WishlistContextProvider } from "./context/WishlistContext";
-import Wishlist from './components/Wishlist/Wishlist';
-
+import Wishlist from "./components/Wishlist/Wishlist";
 
 const routers = createBrowserRouter([
   {
@@ -135,14 +134,14 @@ function App() {
   return (
     <>
       <QueryClientProvider client={query}>
-        <CartContextProvider>
-          <WishlistContextProvider>
-            <UserContextProvider>
+        <UserContextProvider>
+          <CartContextProvider>
+            <WishlistContextProvider>
               <RouterProvider router={routers}></RouterProvider>
               <Toaster />
-            </UserContextProvider>
-          </WishlistContextProvider>
-        </CartContextProvider>
+            </WishlistContextProvider>
+          </CartContextProvider>
+        </UserContextProvider>
       </QueryClientProvider>
     </>
   );

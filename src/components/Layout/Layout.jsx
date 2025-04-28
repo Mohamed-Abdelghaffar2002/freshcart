@@ -8,7 +8,7 @@ export default function Layout() {
   return (
     <>
       <Navbar />
-      <div className={`container bg-light-pattern py-12 mt-6`}>
+      <div className={`container  py-12 mt-6`}>
         <Offline>
           <div className=" p-3 inset-0 bg-slate-300/50 fixed center z-50">
             <div className="bg-white p-3 text-center text-red-700 font-semibold">
