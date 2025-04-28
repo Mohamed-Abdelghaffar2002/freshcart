@@ -7,7 +7,6 @@ export let WishlistContext = createContext();
 export function WishlistContextProvider({ children }) {
   const headers = { token: localStorage.getItem("userToken") };
   const [wishlist, setWishlist] = useState({});
-  // const [wishlistIds, setWishlistIds] = useState([]);
 
   async function addProductToWishlist(productId) {
     try {
@@ -18,8 +17,6 @@ export function WishlistContextProvider({ children }) {
       );
       getProductsWishlist();
       // console.log(data);
-      // localStorage.setItem("wishlist", data?.data?.toString());
-      // setWishlistIds(data?.data);
       toast.success(data.message, { position: "bottom-right" });
     } catch (error) {
       // console.log(error);
@@ -34,8 +31,6 @@ export function WishlistContextProvider({ children }) {
         { headers }
       );
       getProductsWishlist();
-      // localStorage.setItem("wishlist", data?.data?.toString());
-      // setWishlistIds(data?.data);
       // console.log(data);
       toast.success(data.message, { position: "top-center", duration: 800 });
     } catch (error) {
@@ -57,24 +52,12 @@ export function WishlistContextProvider({ children }) {
       // console.log(wishlist);
       const ids = data?.data?.map((prod) => prod.id);
       // console.log(ids);
-      // setWishlistIds(ids);
-      // localStorage.setItem("wishlist", ids?.toString());
     } catch (error) {
       // console.error(error);
     }
   }
-  // useEffect(() => {
-  //   if (!wishlistIds) {
-  //     return;
-  //   } else {
-  //     localStorage.setItem("wishlist", wishlistIds?.toString());
-  //   }
-  // }, [wishlistIds]);
-
   useEffect(() => {
     getProductsWishlist();
-    // setWishlistIds(localStorage?.getItem("wishlist")?.split(","));
-    // localStorage.setItem("wishlist", wishlistIds?.toString());
   }, []);
 
   return (
@@ -84,8 +67,6 @@ export function WishlistContextProvider({ children }) {
         wishlist,
         setWishlist,
         removeProductFromWishlist,
-        // wishlistIds,
-        // setWishlistIds,
       }}
     >
       {children}
