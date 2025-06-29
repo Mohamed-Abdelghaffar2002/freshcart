@@ -25,7 +25,7 @@ export default function ProductByCategory() {
             {filteredData.map((product) => {
               return (
                 <div
-                  className="px-2 pt-0  mt-0 w-1/2 xl:w-1/6 lg:w-1/5 md:w-1/4 sm:w-1/3 bg-white"
+                  className="px-2 pt-0  mt-0 w-1/2 xl:w-1/6 lg:w-1/5 md:w-1/4 sm:w-1/3 "
                   key={product.id}
                 >
                   <div>

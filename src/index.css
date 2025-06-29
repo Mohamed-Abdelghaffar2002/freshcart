@@ -26,6 +26,7 @@ a {
 }
 .product {
   overflow: hidden;
+  backdrop-filter: blur(1.6px);
   outline: 4px solid transparent !important;
   transition: all 0.4s;
 }
